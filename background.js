@@ -15,14 +15,15 @@ chrome.runtime.onMessageExternal.addListener(
         } else if (request.methodName == 'getPlatformInfo'){
 
             const platformInfo = await chrome.runtime.getPlatformInfo();
+            const {arch, naclArch, os} = platformInfo;
 
-            handleTabSendMessage("platformInfo", `platformInfo: ${platformInfo}`);
+            handleTabSendMessage("platformInfo", `platformInfo os: ${JSON.stringify(os)}`);
 
         } else if (request.methodName == 'getSystemStorageInfo'){
 
             const storageInfo  = await chrome.system.storage.getInfo();
             
-            handleTabSendMessage("systemStorage", `storageInfo: ${storageInfo}`);
+            handleTabSendMessage("systemStorage", `storageInfo: ${JSON.stringify(storageInfo)}`);
             
         }
     }
