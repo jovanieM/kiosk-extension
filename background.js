@@ -5,12 +5,20 @@ chrome.runtime.onMessageExternal.addListener(
         if (request.methodName == 'callRestart') {
             console.log("restart called in background");
 
-            handleTabSendMessage("restart", "restarting after 5 seconds");
+            handleTabSendMessage("restart", "restarting now");
                 
             console.log(`jmolas ${sendResponse}`);
 
             //restart chrome device after 5 seconds
+            chrome.runtime.restart();
+
+        } else if (request.methodName == 'callRestartAfterDelay'){
+
+            const platformInfo = await chrome.runtime.getPlatformInfo();
+
             chrome.runtime.restartAfterDelay(5);
+
+            handleTabSendMessage("restartAfterDelay", "restarting after 5 seconds");
 
         } else if (request.methodName == 'getPlatformInfo'){
 

@@ -15,6 +15,10 @@
           //display message
           p1.innerText = request.message;
           
+      } else if (request.action == 'restartAfterDelay'){
+
+        p1.innerText = request.message;
+    
       } else if (request.action == 'platformInfo'){
 
           p1.innerText = request.message;
