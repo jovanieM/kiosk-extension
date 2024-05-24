@@ -1,0 +1,33 @@
+{
+    "name": "Kiosk Extension",
+    "version": "3.0",
+    "description": "This extension is for testing chrome extension API",
+    "manifest_version": 3,
+    "author": "Jovanie Molas",
+    "action": {
+        "default_title": "Test Chrome Extension API"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "scripting",
+        "tabs",
+        "system.storage"
+    ],
+    "host_permissions": ["<all_urls>"],
+    "content_scripts": [
+        {
+            "matches": ["*://*.glitch.me/*"],
+            "js": ["content-script.js"]
+        }
+    ],
+    "externally_connectable": {
+        "ids": [
+            "meekmimaofeadchjmfleeefpinkljcjo"
+        ],
+        "accepts_tls_channel_id": false,
+        "matches": ["*://*.glitch.me/*"]
+    },
+    "update_url": "https://storage.googleapis.com/jm-storage-bucket/chrome-ext/updates.xml"
+}
