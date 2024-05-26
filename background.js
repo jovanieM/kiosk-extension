@@ -9,7 +9,7 @@ chrome.runtime.onMessageExternal.addListener(
                 
             console.log(`jmolas ${sendResponse}`);
 
-            //restart chrome device after 5 seconds
+            //restart device immediately
             chrome.runtime.restart();
 
         } else if (request.methodName == 'callRestartAfterDelay'){
@@ -18,12 +18,12 @@ chrome.runtime.onMessageExternal.addListener(
 
             handleTabSendMessage("restartAfterDelay", "restarting after 5 seconds");
 
+            //restart chrome device after 5 seconds
             chrome.runtime.restartAfterDelay(5);
 
         } else if (request.methodName == 'getPlatformInfo'){
 
             const platformInfo = await chrome.runtime.getPlatformInfo();
-            const {arch, nacl_arch, os} = platformInfo;
 
             handleTabSendMessage("platformInfo", platformInfo);
 
