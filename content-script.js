@@ -38,16 +38,8 @@
 
           let storageInfos = request.message;
 
-          if(storageInfos.isArray()){
-            storageInfos.array.forEach(storageInfo => {
-              const { capacity, id, name, type } = storageInfo;
+          p1.innerText = JSON.stringify(storageInfos);
 
-              p1.innerText = `StorageInfo: capacity=${capacity}, id=${id}, name=${name}, type=${type}`;
-
-            });
-          } else {
-            p1.innerText = request.message;
-          }
       }
       sendResponse({received: true})
     
