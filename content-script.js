@@ -21,14 +21,34 @@
     
       } else if (request.action == 'platformInfo'){
 
-          p1.innerText = request.message;
-      
+          const platformInfo = request.message;
+
+          if (platformInfo){
+            const {arch, nacl_arch, os} = platformInfo;
+            
+            p1.innerText = `platformInfo: arch=${JSON.stringify(arch)}, nacl_arch=${JSON.stringify(nacl_arch)}, os=${JSON.stringify(os)}`;
+            
+          } else {
+
+            p1.innerText = request.message;
+
+          }
+     
       } else if (request.action == 'systemStorage'){
 
-          p1.innerText = request.message;
+          let storageInfos = request.message;
 
+          if(storageInfos.isArray()){
+            storageInfos.array.forEach(storageInfo => {
+              const { capacity, id, name, type } = storageInfo;
+
+              p1.innerText = `StorageInfo: capacity=${capacity}, id=${id}, name=${name}, type=${type}`;
+
+            });
+          } else {
+            p1.innerText = request.message;
+          }
       }
-      
       sendResponse({received: true})
     
   });

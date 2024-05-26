@@ -16,22 +16,22 @@ chrome.runtime.onMessageExternal.addListener(
 
             const platformInfo = await chrome.runtime.getPlatformInfo();
 
-            chrome.runtime.restartAfterDelay(5);
-
             handleTabSendMessage("restartAfterDelay", "restarting after 5 seconds");
+
+            chrome.runtime.restartAfterDelay(5);
 
         } else if (request.methodName == 'getPlatformInfo'){
 
             const platformInfo = await chrome.runtime.getPlatformInfo();
-            const {arch, naclArch, os} = platformInfo;
+            const {arch, nacl_arch, os} = platformInfo;
 
-            handleTabSendMessage("platformInfo", `platformInfo os: ${JSON.stringify(os)}`);
+            handleTabSendMessage("platformInfo", platformInfo);
 
         } else if (request.methodName == 'getSystemStorageInfo'){
 
             const storageInfo  = await chrome.system.storage.getInfo();
             
-            handleTabSendMessage("systemStorage", `storageInfo: ${JSON.stringify(storageInfo)}`);
+            handleTabSendMessage("systemStorage", storageInfo);
             
         }
     }
