@@ -3,18 +3,15 @@ chrome.runtime.onMessageExternal.addListener(
     async function (request, sender, sendResponse){
 
         if (request.methodName == 'callRestart') {
-            console.log("restart called in background");
 
             handleTabSendMessage("restart", "restarting now");
                 
-            console.log(`jmolas ${sendResponse}`);
+            console.log(`sendResponse: ${sendResponse}`);
 
             //restart device immediately
             chrome.runtime.restart();
 
         } else if (request.methodName == 'callRestartAfterDelay'){
-
-            const platformInfo = await chrome.runtime.getPlatformInfo();
 
             handleTabSendMessage("restartAfterDelay", "restarting after 5 seconds");
 

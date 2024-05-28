@@ -24,6 +24,7 @@
           const platformInfo = request.message;
 
           if (platformInfo){
+
             const {arch, nacl_arch, os} = platformInfo;
             
             p1.innerText = `platformInfo: arch=${JSON.stringify(arch)}, nacl_arch=${JSON.stringify(nacl_arch)}, os=${JSON.stringify(os)}`;
@@ -41,6 +42,7 @@
           p1.innerText = JSON.stringify(storageInfos);
 
       }
+      
       sendResponse({received: true})
     
   });
