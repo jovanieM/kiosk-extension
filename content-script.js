@@ -26,8 +26,12 @@
           if (platformInfo){
 
             const {arch, nacl_arch, os} = platformInfo;
-            
-            p1.innerText = `platformInfo: arch=${JSON.stringify(arch)}, nacl_arch=${JSON.stringify(nacl_arch)}, os=${JSON.stringify(os)}`;
+
+            const info = `platformInfo: arch=${JSON.stringify(arch)}, nacl_arch=${JSON.stringify(nacl_arch)}, os=${JSON.stringify(os)}`;
+
+            console.log(`chrome extension content-script: ${info}`);
+
+            p1.innerText = info;
             
           } else {
 
@@ -38,6 +42,8 @@
       } else if (request.action == 'systemStorage'){
 
           let storageInfos = request.message;
+
+          console.log(`chrome extension content-script: ${JSON.stringify(storageInfos)}`);
 
           p1.innerText = JSON.stringify(storageInfos);
 

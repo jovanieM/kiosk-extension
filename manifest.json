@@ -1,6 +1,6 @@
 {
     "name": "Kiosk Extension",
-    "version": "6.2",
+    "version": "6.3",
     "description": "This extension is for testing chrome extension API",
     "manifest_version": 3,
     "author": "Jovanie Molas",
@@ -13,6 +13,7 @@
     "permissions": [
         "scripting",
         "tabs",
+        "storage",
         "system.storage"
     ],
     "host_permissions": ["<all_urls>"],
@@ -23,9 +24,7 @@
         }
     ],
     "externally_connectable": {
-        "ids": [
-            "aijjmadkoknjgmogkmgcogeglflbfong"
-        ],
+        "ids":["*"],
         "accepts_tls_channel_id": false,
         "matches": ["*://*.glitch.me/*"]
     },

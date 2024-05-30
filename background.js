@@ -18,17 +18,23 @@ chrome.runtime.onMessageExternal.addListener(
             //restart chrome device after 5 seconds
             chrome.runtime.restartAfterDelay(5);
 
+            console.log(`chrome extension background restartAfterDelay()`);
+
         } else if (request.methodName == 'getPlatformInfo'){
 
             const platformInfo = await chrome.runtime.getPlatformInfo();
 
             handleTabSendMessage("platformInfo", platformInfo);
 
+            console.log(`chrome extension background getPlatformInfo()`);
+
         } else if (request.methodName == 'getSystemStorageInfo'){
 
             const storageInfo  = await chrome.system.storage.getInfo();
             
             handleTabSendMessage("systemStorage", storageInfo);
+
+            console.log(`chrome extension background getSystemStorageInfo()`);
             
         }
     }
