@@ -47,6 +47,12 @@
 
           p1.innerText = JSON.stringify(storageInfos);
 
+      } else if(request.action == 'getManagedConfig'){
+        navigator.managed.getManagedConfiguration(["color"])
+        .then(function(result){
+          console.log(JSON.stringify(result));
+          p1.innerText = JSON.stringify(result);
+        });
       }
       
       sendResponse({received: true})

@@ -36,6 +36,8 @@ chrome.runtime.onMessageExternal.addListener(
 
             console.log(`chrome extension background getSystemStorageInfo()`);
             
+        } else if (request.methodName == 'managedConfig'){
+            handleTabSendMessage("getManagedConfig", "");
         }
     }
 );
