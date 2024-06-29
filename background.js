@@ -1,4 +1,4 @@
-// message handler
+// handle message sent from PWA
 chrome.runtime.onMessageExternal.addListener(
     async function (request, sender, sendResponse){
 
@@ -38,12 +38,26 @@ chrome.runtime.onMessageExternal.addListener(
             
         } else if (request.methodName == 'managedConfig'){
             handleTabSendMessage("getManagedConfig", "");
+        } else if (request.methodName == 'startCalibrationMsg'){
+
+            handleTabSendMessage("startCalibrating", "Start Calibrating");
+
+            let displayUnitInfos = await chrome.system.display.getInfo();
+
+            console.log(JSON.stringify(displayUnitInfos));
+
+            let displayId = displayUnitInfos[0].id;
+
+            chrome.system.display.overscanCalibrationStart(displayId);
+            
         }
+
     }
 );
 
+
 async function handleTabSendMessage(action, message){
-    //send message to content script to update 
+    //send message to content script to update PWA UI
     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
     return await chrome.tabs.sendMessage(
         tab.id,

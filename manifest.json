@@ -14,7 +14,8 @@
         "scripting",
         "tabs",
         "storage",
-        "system.storage"
+        "system.storage",
+        "system.display"
     ],
     "host_permissions": ["<all_urls>"],
     "content_scripts": [
