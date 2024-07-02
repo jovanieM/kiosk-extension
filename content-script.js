@@ -2,6 +2,8 @@
  
   let infoContainer = document.getElementsByClassName("message-container")[0];
 
+  let displayId = "";
+
   let p1 = document.createElement("p");
   p1.innerText = "waiting for message";
 
@@ -58,6 +60,16 @@
           p1.innerText = JSON.stringify(result);
 
         });
+      
+      } else if(request.action == 'getDisplayInfo'){
+
+        let displayId = request.message;
+
+        // console.log(`chrome extension content-script: ${JSON.stringify(displayInfos)}`);
+
+        // displayId = displayInfos[0].id;
+
+        p1.innerText = `System display's id: ${JSON.stringify(displayId)}`;
 
       } else if(request.action == 'startCalibrating'){
 

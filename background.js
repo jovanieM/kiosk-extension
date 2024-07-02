@@ -37,18 +37,28 @@ chrome.runtime.onMessageExternal.addListener(
             console.log(`chrome extension background getSystemStorageInfo()`);
             
         } else if (request.methodName == 'managedConfig'){
-            handleTabSendMessage("getManagedConfig", "");
-        } else if (request.methodName == 'startCalibrationMsg'){
 
-            handleTabSendMessage("startCalibrating", "Start Calibrating");
+            handleTabSendMessage("getManagedConfig", "");
+
+        } else if (request.methodName == 'getDisplayInfoMsg'){
 
             let displayUnitInfos = await chrome.system.display.getInfo();
 
-            console.log(JSON.stringify(displayUnitInfos));
+            let id = displayUnitInfos[0].id;
 
-            let displayId = displayUnitInfos[0].id;
+            handleTabSendMessage("getDisplayInfo", id);
 
-            chrome.system.display.overscanCalibrationStart(displayId);
+            console.log(JSON.stringify(id));
+
+            sendResponse({displayId: id});
+
+        } else if (request.methodName == 'startCalibrationMsg'){
+
+            let dId = request.displayId;
+
+            handleTabSendMessage("startCalibrating", `Start Calibrating for displayId ${dId}`);
+
+           chrome.system.display.overscanCalibrationStart(displayId);
             
         }
 
