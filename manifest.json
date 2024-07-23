@@ -11,19 +11,9 @@
         "service_worker": "background.js"
     },
     "permissions": [
-        "scripting",
-        "tabs",
-        "storage",
-        "system.storage",
         "system.display"
     ],
     "host_permissions": ["<all_urls>"],
-    "content_scripts": [
-        {
-            "matches": ["*://*.glitch.me/*"],
-            "js": ["content-script.js"]
-        }
-    ],
     "externally_connectable": {
         "ids":["*"],
         "accepts_tls_channel_id": false,
