@@ -1,6 +1,6 @@
 {
     "name": "Kiosk Extension",
-    "version": "6.9",
+    "version": "7.0",
     "description": "This extension is for testing chrome extension API",
     "manifest_version": 3,
     "author": "Jovanie Molas",
