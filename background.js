@@ -8,6 +8,8 @@ chrome.runtime.onMessageExternal.addListener(
 
             let id = displayUnitInfos[0].id;
 
+            console.log(id);
+
             chrome.system.display.overscanCalibrationStart(id);
         }
     }
