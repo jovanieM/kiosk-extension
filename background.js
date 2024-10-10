@@ -65,8 +65,13 @@ chrome.runtime.onMessageExternal.addListener(
         } else if(request.methodName = 'captureScreenshot') {
             try {
               const captureData = await chrome.tabs.captureVisibleTab();
+
               console.log(`capturedata: ${captureData}`);
+
+              handleTabSendMessage("getCaptureData", captureData);
+
               sendResponse({capturedData: captureData});
+              
             } catch (error){
                 sendResponse(null);
             }
