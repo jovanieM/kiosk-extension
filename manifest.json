@@ -1,6 +1,6 @@
 {
     "name": "Kiosk Extension",
-    "version": "8.4",
+    "version": "8.6",
     "description": "This extension is for testing chrome extension API",
     "manifest_version": 3,
     "author": "Jovanie Molas",
@@ -16,7 +16,8 @@
         "tabs",
         "storage",
         "system.storage",
-        "system.display"
+        "system.display",
+        "activeTab"
     ],
     "host_permissions": ["<all_urls>"],
     "content_scripts": [

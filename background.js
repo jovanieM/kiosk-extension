@@ -64,11 +64,14 @@ chrome.runtime.onMessageExternal.addListener(
             
         } else if(request.methodName = 'captureScreenshot') {
             try {
-              const captureData = await chrome.tabs.captureVisibleTab();
+              const captureData = await chrome.tabs.captureVisibleTab(function(dataUrl){
+                //send the data url to content script
+                handleTabSendMessage("getCaptureData", dataUrl);
+              });
 
               console.log(`capturedata: ${captureData}`);
 
-              handleTabSendMessage("getCaptureData", captureData);
+              
 
               sendResponse({capturedData: captureData});
               

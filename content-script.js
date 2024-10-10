@@ -73,6 +73,10 @@
 
         p1.innerText = JSON.stringify(request.message);
         
+      } else if(request.action == 'getCaptureData'){
+
+        p1.innerText = JSON.stringify(request.message);
+        
       }
       
       sendResponse({received: true})
