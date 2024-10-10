@@ -58,9 +58,19 @@ chrome.runtime.onMessageExternal.addListener(
 
             handleTabSendMessage("startCalibrating", `Start Calibrating for displayId ${dId}`);
 
-           chrome.system.display.overscanCalibrationStart(displayId);
+            console.log(dId);
+
+            chrome.system.display.overscanCalibrationStart(dId);
             
-        }
+        } else if(request.methodName = 'captureScreenshot') {
+            try {
+              const captureData = await chrome.tabs.captureVisibleTab();
+              console.log(`capturedata: ${captureData}`);
+              sendResponse({capturedData: captureData});
+            } catch (error){
+                sendResponse(null);
+            }
+          }
 
     }
 );

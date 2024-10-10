@@ -1,6 +1,6 @@
 {
     "name": "Kiosk Extension",
-    "version": "6.9",
+    "version": "8.3",
     "description": "This extension is for testing chrome extension API",
     "manifest_version": 3,
     "author": "Jovanie Molas",
@@ -10,6 +10,7 @@
     "background": {
         "service_worker": "background.js"
     },
+    "kiosk_enabled": true,
     "permissions": [
         "scripting",
         "tabs",
@@ -20,7 +21,7 @@
     "host_permissions": ["<all_urls>"],
     "content_scripts": [
         {
-            "matches": ["*://*.glitch.me/*"],
+            "matches": ["*://*.glitch.me/"],
             "js": ["content-script.js"]
         }
     ],

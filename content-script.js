@@ -2,10 +2,8 @@
  
   let infoContainer = document.getElementsByClassName("message-container")[0];
 
-  let displayId = "";
-
   let p1 = document.createElement("p");
-  p1.innerText = "waiting for message";
+  p1.innerText = "Extension connected: waiting for message";
 
 
   if (infoContainer) {
